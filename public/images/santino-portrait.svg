@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Black and white portrait placeholder">
+  <rect width="900" height="1200" fill="#111"/>
+  <ellipse cx="450" cy="1260" rx="410" ry="520" fill="#3b3b3b"/>
+  <path d="M195 1200c35-225 125-352 255-352s220 127 255 352" fill="#272727"/>
+  <ellipse cx="450" cy="498" rx="201" ry="278" fill="#d6d6d6"/>
+  <path d="M254 473c5-230 108-335 220-335 158 0 243 118 227 357-55-88-139-142-232-142-76 0-147 37-215 120Z" fill="#101010"/>
+  <path d="M293 431c32-91 101-157 182-174-112 76-124 171-126 250-40-11-54-36-56-76Z" fill="#454545"/>
+  <ellipse cx="373" cy="504" rx="18" ry="13" fill="#111"/><ellipse cx="530" cy="504" rx="18" ry="13" fill="#111"/>
+  <path d="M406 637c29 17 58 17 88 0" fill="none" stroke="#333" stroke-width="11" stroke-linecap="round"/>
+  <path d="M365 718c51 32 119 32 170 0" fill="none" stroke="#777" stroke-width="8"/>
+  <path d="M246 530c-18 44-15 129 3 170" fill="none" stroke="#b6b6b6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M654 530c18 44 15 129-3 170" fill="none" stroke="#b6b6b6" stroke-width="24" stroke-linecap="round"/>
+</svg>
