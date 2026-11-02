@@ -3,21 +3,27 @@ import type { Project } from "@/data/projects";
 type ProjectCardProps = {
   project: Project;
   index: number;
+  onImageClick: () => void;
 };
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, onImageClick }: ProjectCardProps) {
   return (
     <article
       className={`reveal ${index % 2 ? "from-right" : "from-left"}`}
       style={{ transitionDelay: `${index * 70}ms` }}
     >
-      <figure className="group relative aspect-[4/5] overflow-hidden border border-[#fdcc1e]/20 bg-[#101010] p-3 transition-colors hover:border-[#fdcc1e]/55">
+      <button
+        type="button"
+        onClick={onImageClick}
+        aria-label={`View ${project.title} design larger`}
+        className="group relative block aspect-[4/5] w-full overflow-hidden border border-[#fdcc1e]/20 bg-[#101010] p-3 text-left transition-colors hover:border-[#fdcc1e]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fdcc1e]"
+      >
         <img
           src={project.image}
           alt={`${project.title} design project`}
           className="size-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
         />
-      </figure>
+      </button>
 
       <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
         <h2 className="text-xl font-medium tracking-tight">{project.title}</h2>
