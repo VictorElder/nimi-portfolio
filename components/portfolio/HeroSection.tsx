@@ -15,7 +15,7 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 w-full md:w-[58%]">
-        <p className="reveal from-left font-mono text-[10px] uppercase tracking-[.08em]">
+        <p className="reveal from-left font-mono text-[10px] sm:text-[17px] uppercase tracking-[.08em]">
           Independent graphic designer
         </p>
         <h1 className="reveal from-left my-9 text-[clamp(58px,8.4vw,128px)] font-medium leading-[.84] tracking-[-.075em]">
@@ -24,9 +24,8 @@ export default function HeroSection() {
           for bold ideas.
         </h1>
         <div className="reveal from-up flex w-full max-w-[590px] items-end justify-between gap-6">
-          <p className="max-w-[270px] text-sm leading-6">
-            I build distinctive identities, editorial worlds, and campaigns
-            for people with something to say.
+          <p className="max-w-[270px] text-md leading-6">
+            I create distinctive visual identities, editorial experiences, and campaigns for people and brands with something to say.
           </p>
         </div>
       </div>

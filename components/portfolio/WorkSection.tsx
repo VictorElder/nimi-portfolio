@@ -6,7 +6,7 @@ import ProjectCard from "./ProjectCard";
 
 export default function WorkSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -36,20 +36,21 @@ export default function WorkSection() {
   return (
     <section id="work" className="px-6 py-28 lg:px-[82px] lg:py-40">
       <div className="reveal from-left mb-16 max-w-3xl">
-        <p className="font-mono text-[10px] uppercase tracking-[.2em]">
-          Selected client work
-        </p>
+        
         <h1 className="mt-5 text-[clamp(42px,6vw,88px)] font-medium leading-[.9] tracking-[-.07em]">
           Design that makes
           <br />
           <em className="font-serif font-normal">people feel something.</em>
         </h1>
         <p className="mt-7 max-w-md text-sm leading-6 text-[#fdcc1e]/80">
-          A focused selection of promotional design, brand communication, and
-          event artwork made to stand out in the real world.
+          A curated collection of visual identities, promotional designs, and creative campaigns developed for clients and brands. Each project reflects a thoughtful approach to visual communication, balancing strong concepts with purposeful execution and distinctive aesthetics.
         </p>
       </div>
 
+        <p className="font-mono text-[10px] uppercase tracking-[.2em]">
+          Selected client work
+        </p>
+        
       <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
         {projects.map((project, index) => (
           <ProjectCard
@@ -94,16 +95,28 @@ export default function WorkSection() {
             className="flex max-h-full max-w-5xl flex-col items-center gap-4"
             onClick={(event) => event.stopPropagation()}
             onTouchStart={(event) => {
-              touchStartX.current = event.touches[0]?.clientX ?? null;
+              const touch = event.touches[0];
+              touchStart.current = touch
+                ? { x: touch.clientX, y: touch.clientY }
+                : null;
             }}
             onTouchEnd={(event) => {
-              const startX = touchStartX.current;
-              const endX = event.changedTouches[0]?.clientX;
-              touchStartX.current = null;
-              if (startX === null || endX === undefined || Math.abs(endX - startX) < 40) return;
+              const start = touchStart.current;
+              const touch = event.changedTouches[0];
+              touchStart.current = null;
+              if (!start || !touch) return;
+
+              const deltaX = touch.clientX - start.x;
+              const deltaY = touch.clientY - start.y;
+              if (Math.abs(deltaY) >= 40 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                if (deltaY > 0) setActiveIndex(null);
+                return;
+              }
+              if (Math.abs(deltaX) < 40 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
               setActiveIndex((current) => {
                 if (current === null) return null;
-                return endX < startX
+                return deltaX < 0
                   ? (current + 1) % projects.length
                   : (current - 1 + projects.length) % projects.length;
               });

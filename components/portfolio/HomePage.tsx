@@ -1,4 +1,5 @@
 import AboutSection from "./AboutSection";
+import Footer from "./Footer";
 import HeroSection from "./HeroSection";
 import RevealObserver from "./RevealObserver";
 import ServicesMarquee from "./ServicesMarquee";
@@ -10,7 +11,7 @@ export default function HomePage() {
       <HeroSection />
       <ServicesMarquee />
       <AboutSection />
+      <Footer />
     </main>
   );
 }
-
