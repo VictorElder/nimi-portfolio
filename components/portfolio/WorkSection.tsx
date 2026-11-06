@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { projects } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 
-export default function WorkSection() {
+export default function WorkSection({ projects }: { projects: Project[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
@@ -29,7 +29,7 @@ export default function WorkSection() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [activeIndex]);
+  }, [activeIndex, projects]);
 
   const activeProject = activeIndex === null ? null : projects[activeIndex];
 
@@ -54,7 +54,7 @@ export default function WorkSection() {
       <div className="grid gap-x-10 gap-y-20 md:grid-cols-2">
         {projects.map((project, index) => (
           <ProjectCard
-            key={project.title}
+            key={project.id ?? project.title}
             project={project}
             index={index}
             onImageClick={() => setActiveIndex(index)}

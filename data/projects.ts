@@ -1,8 +1,10 @@
 export type Project = {
+  id?: string;
   title: string;
   type: string;
   image: string;
   description: string;
+  sortOrder?: number;
 };
 
 export const projects: Project[] = [

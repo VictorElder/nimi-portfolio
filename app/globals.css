@@ -4,6 +4,15 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes admin-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-admin-in {
+  animation: admin-appear 260ms ease-out both;
+}
+
 .reveal {
   opacity: 0;
   transition:
@@ -64,6 +73,10 @@ html {
   }
 
   .services-marquee-track {
+    animation: none;
+  }
+
+  .animate-admin-in {
     animation: none;
   }
 }

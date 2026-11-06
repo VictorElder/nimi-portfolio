@@ -7,7 +7,6 @@ import { useState } from "react";
 const navigationItems = [
   { label: "Home", href: "/" },
   { label: "Designs", href: "/designs" },
-  { label: "Portfolio", href: "/portfolio" },
   { label: "Contact me", href: "/contact" },
 ];
 
@@ -74,7 +73,6 @@ export default function Navbar() {
                   className={`flex min-h-14 items-center justify-between text-base transition hover:text-[#fdcc1e] ${pathname === item.href ? "text-[#fdcc1e]" : "text-[#fdcc1e]/80"}`}
                 >
                   <span>{item.label}</span>
-                  <span aria-hidden="true" className="font-mono text-sm text-[#fdcc1e]/50">0{index + 1}</span>
                 </Link>
               </li>
             ))}
