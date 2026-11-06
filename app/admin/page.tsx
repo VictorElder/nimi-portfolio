@@ -6,6 +6,7 @@ import { getAdminProjects } from "@/lib/projects";
 import { isAdminBackendConfigured } from "@/lib/supabase/config";
 
 export const metadata = { title: "Portfolio dashboard — Nimi" };
+export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
   if (!isAdminBackendConfigured()) {

@@ -40,6 +40,17 @@ The design gallery is managed at `/admin`. The dashboard uses Supabase Auth for 
 6. In Supabase **Authentication → Users**, invite the same owner email. The app handles Supabase's default invitation link and exchanges its one-time session for a secure cookie. The owner opens the email invitation, sets a password, and can then sign in at `/admin/login`.
 7. Restart the Next.js development server. The owner can now open `/admin` and invite the rest of the team by email.
 
+### Configure Vercel
+
+The Supabase keys in `.env.local` are local-only and are not sent to GitHub. In Vercel, open the `nimi` project → **Settings → Environment Variables** and add these values for **Production** (and **Preview** if you use preview deployments):
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SECRET_KEY` (keep this server-only; do not add a `NEXT_PUBLIC_` prefix)
+- `NEXT_PUBLIC_SITE_URL` = `https://nimianaye.vercel.app`
+
+After saving the variables, redeploy the latest `main` commit. Supabase **Authentication → URL Configuration** must also allow `https://nimianaye.vercel.app` and `https://nimianaye.vercel.app/auth/callback`.
+
 The owner can invite other admins and managers. Admins can invite managers. Managers can add, edit, publish, unpublish, and delete portfolio designs. Invited teammates receive a one-time setup link to choose a password; their Supabase session is kept in secure cookies and refreshed while they use the site. Admins can change their password in Account settings or request a reset from the sign-in page.
 
 Project uploads accept JPG, PNG, and WebP files up to 8 MB. Each design needs a project name, category, short project note, image, and display order. Unpublished designs remain in the dashboard but are hidden from the public Designs page.

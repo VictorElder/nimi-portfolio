@@ -5,6 +5,7 @@ import { isAdminBackendConfigured } from "@/lib/supabase/config";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 
 export const metadata = { title: "Admin sign in — Nimi" };
+export const dynamic = "force-dynamic";
 
 export default async function AdminLoginPage({
   searchParams,

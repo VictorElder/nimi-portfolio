@@ -3,6 +3,7 @@ import { getAdminMember, getSignedInUser } from "@/lib/admin-access";
 import SetPasswordForm from "@/components/admin/SetPasswordForm";
 
 export const metadata = { title: "Change your password — Nimi" };
+export const dynamic = "force-dynamic";
 
 export default async function ResetPasswordPage() {
   const access = await getSignedInUser();
